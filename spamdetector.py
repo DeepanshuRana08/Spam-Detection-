@@ -2,11 +2,11 @@ import streamlit as st
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
-from win32com.client import Dispatch
+# from win32com.client import Dispatch
 
-def speak(text):
-	speak=Dispatch(("SAPI.SpVoice"))
-	speak.Speak(text)
+# def speak(text):
+# 	speak=Dispatch(("SAPI.SpVoice"))
+# 	speak.Speak(text)
 
 
 model = pickle.load(open('spam.pkl','rb'))
@@ -30,8 +30,8 @@ def main():
 			result=model.predict(vec)
 			if result[0]==0:
 				st.success("This is Not A Spam Email")
-				speak("This is Not A Spam Email")
+				#speak("This is Not A Spam Email")
 			else:
 				st.error("This is A Spam Email")
-				speak("This is A Spam Email")
+				#speak("This is A Spam Email")
 main()
